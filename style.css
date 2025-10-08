@@ -1,0 +1,652 @@
+
+/* 
+
+*/
+
+/* global css */
+
+body{
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    background-color: #13181e;
+}
+
+
+/* top-section */
+.top-sections{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    /* background-color: red; */
+}
+/*          date-section             */
+
+.date-section,.dateBox{
+    border-radius: 20px;
+    border: 1px solid #93969f32;
+}
+
+
+
+.date-section{
+    background: linear-gradient(to right,rgba(1, 1, 38, 0.364),#152131),linear-gradient(to left,rgba(1, 1, 38, 0.364),#152131);
+    text-align: end;
+    padding: 15px;
+    width: 47%;
+}
+.dateBox{
+    background-color: #13181e;
+    padding: 15px 15px 0px ;
+    box-shadow: 5px 5px 15px rgba(0, 255, 255, 0.102),-5px -5px 15px rgba(0, 255, 255, 0.102) ;
+}
+/* melad-date and hegri-date*/   
+
+.melad-date,.hegri-date{
+    border: 1px solid #93969f68;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: 600;
+        position: relative;
+
+}
+
+.melad-date h5,.hegri-date h5{
+    font-size: 15px;
+    color: #547f93;
+}
+
+.melad-date time,.hegri-date time{
+    font-size: 20px;
+}
+
+.fa-copy,.fa-check{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: #ffffffdb;
+    padding: 6px;
+}
+
+.fa-copy:hover,.fa-check:hover{
+      border-radius: 5px;
+    background-color: #424242;
+}
+
+.bi-sunrise,.bi-brightness-high, .bi-sunset, .bi-moon{
+    font-size: 38px;
+    margin-bottom: -5px;
+    color: #f5c906;
+    z-index: 10;
+}
+
+
+.p1{
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+    align-items: center;
+}
+/* melad-date */
+/* hegri-date */    
+
+/* note */
+.note{
+    text-align: center;
+    margin: 15px 0px;
+    color: #93969f68;
+    font-size: 14px;
+}
+/* horizontal line */
+hr{
+    width: 80%;
+    height: 1px;
+    background-color: #152131;
+    text-shadow: #13181e;
+    border-radius: 50%;
+    margin: 10px auto;
+    text-align: center;
+}
+/* next prayer section */
+
+/* 
+
+#036731
+#45c354
+#f5c906
+#03d792
+#96b6aa
+#1f2732
+
+*/
+
+.next-prayer-section,.next-prayer-section-box{
+    border-radius: 20px;
+    padding: 15px;
+    
+}
+
+.next-prayer-section{
+    min-height: 275px;
+    background: linear-gradient(to right,rgba(1, 1, 38, 0.364),#152131),linear-gradient(to left,rgba(1, 1, 38, 0.364),#152131);
+    
+    border: 1px solid #93969f38;
+    text-align: end;
+    width: 47%;
+
+
+
+}
+
+.next-prayer-section-box{
+    min-height:245px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #036731;
+}
+.next-prayer-section-box article{
+    border-radius: 20px;
+}
+.next-prayer-section-box .a1{
+    font-size: 10px;
+}
+.a1 h3{
+    color: #03d792;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: -15px;
+}
+
+.a1 .p1{
+    font-size: 12px;
+}
+.a1 .p2,.a1 .p3{
+    font-size: 11px;
+    text-align: start;
+    margin: 3px;
+}
+.a1 .p3{
+    color: rgba(255, 255, 255, 0.481);
+}
+
+.a2 h3{
+    color:#f5c906;
+    margin-top: -18px;
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+}
+.a2 p{
+    text-align: center;
+}
+.a2{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-left: 20px;
+} 
+.inside-circle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+.a2 .inside-circle p{
+    width: max-content;
+    margin-bottom: 20px;
+}
+
+
+/* prayer times */
+
+.prayer-times{
+    margin: 30px auto ;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    background: linear-gradient(to right,rgba(1, 1, 38, 0.364),#152131),linear-gradient(to left,rgba(1, 1, 38, 0.364),#152131);
+    height: 175px;
+    height: min-content;
+    border-radius: 20px;
+    border: 1px solid #93969f38;
+    padding: 10px 0px;
+    width: 96%;
+}
+
+
+.prayer{
+    background-position: center;
+    background-size: cover;
+    height: 153.5px;
+    min-width: 165px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    position: relative;
+}
+
+.blur{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.69);
+    border-radius: 20px;
+}
+
+.prayer p{
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #f5c906;
+    z-index: 10;
+}
+.prayer time{
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 20px;
+    z-index: 10;
+}
+
+.active{
+  border: 2px solid #ffffffc4;
+
+}
+.active i{
+  color: #03d792;
+
+}
+#fajr{
+    background-image: url("./Images/WhatsApp\ Image\ 2025-09-29\ at\ 21.22.50_a0ec782d.jpg");
+
+}
+
+#dhuhr{
+    background-image: url("./Images/pngtree-ramadan-mubarak-muslim-going-to-perform-namaz-e-fajar-in-mosque-vector-image_15695339.jpg");
+}
+#asr{
+    background-image: url("./Images/WhatsApp\ Image\ 2025-09-29\ at\ 21.23.57_2d18c2ed.jpg");
+}
+#maghrib{
+    background-image: url("./Images/Untitled.jpg");
+}
+#isha{
+    background-image: url("./Images/WhatsApp\ Image\ 2025-09-29\ at\ 21.22.22_4ffa7a48.jpg");
+}
+
+
+/* media querys */
+
+@media screen and (max-width:500px) {
+    .top-sections{
+        flex-wrap: wrap;
+    }
+    .date-section,.next-prayer-section{
+        width: 100%;
+        margin-top: 20px;
+    }
+    .next-prayer-section-box{
+        height: 100%;
+        justify-content: center;
+    }
+    .prayer{
+    margin-bottom: 20px;
+
+    min-width: 223px;
+    }
+}
+
+@media screen and (min-width:501px) and (max-width:992px) {
+    .top-sections{
+        flex-wrap: wrap;
+    }
+    /* .date-section,.next-prayer-section{
+        min-width: 437.1px;
+        max-width: 450px;
+        margin-top: 20px;
+    } */
+
+    .next-prayer-section{
+        height: 335px;
+        padding: 15px;
+    }
+    .next-prayer-section-box{
+        justify-content: center;
+        height:100%;
+    }
+    .a2{
+        margin: auto;
+    }
+        .prayer{
+            min-width: 309px;
+    margin-bottom: 20px;
+    margin: 10px 10px 0px ;
+    }
+}
+
+@media (max-width:518px) {
+    .next-prayer-section{
+        height: 356.75px;
+    }
+
+}
+@media  (max-width:560px){
+        .prayer{
+            min-width: 320px;}
+}
+@media (min-width:768px) and (max-width: 992px){
+    .date-section{
+        height: 335px;
+    }
+    .dateBox{
+        height: 100%;
+    }
+    .melad-date,.hegri-date{
+        margin: 15px auto;
+        height: 91px;
+    }
+}
+
+@media (max-width:768px) and (min-width:561px) {
+            .prayer{
+            min-width: 223px;}
+}
+
+/* switch mode button */
+
+
+.switch {
+  position: fixed;
+  right: 2.5px;
+  top: 3px;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch #input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2196f3;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sun-moon {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: yellow;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+#input:checked + .slider {
+  background-color: black;
+}
+
+#input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+#input:checked + .slider .sun-moon {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: white;
+  -webkit-animation: rotate-center 0.6s ease-in-out both;
+  animation: rotate-center 0.6s ease-in-out both;
+}
+
+.moon-dot {
+  opacity: 0;
+  transition: 0.4s;
+  fill: gray;
+}
+
+#input:checked + .slider .sun-moon .moon-dot {
+  opacity: 1;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round .sun-moon {
+  border-radius: 50%;
+}
+
+#moon-dot-1 {
+  left: 10px;
+  top: 3px;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  z-index: 4;
+}
+
+#moon-dot-2 {
+  left: 2px;
+  top: 10px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  z-index: 4;
+}
+
+#moon-dot-3 {
+  left: 16px;
+  top: 18px;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  z-index: 4;
+}
+
+#light-ray-1 {
+  left: -8px;
+  top: -8px;
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  z-index: -1;
+  fill: white;
+  opacity: 10%;
+}
+
+#light-ray-2 {
+  left: -50%;
+  top: -50%;
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  z-index: -1;
+  fill: white;
+  opacity: 10%;
+}
+
+#light-ray-3 {
+  left: -18px;
+  top: -18px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  z-index: -1;
+  fill: white;
+  opacity: 10%;
+}
+
+.cloud-light {
+  position: absolute;
+  fill: #eee;
+  animation-name: cloud-move;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+.cloud-dark {
+  position: absolute;
+  fill: #ccc;
+  animation-name: cloud-move;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+}
+
+#cloud-1 {
+  left: 30px;
+  top: 15px;
+  width: 40px;
+}
+
+#cloud-2 {
+  left: 44px;
+  top: 10px;
+  width: 20px;
+}
+
+#cloud-3 {
+  left: 18px;
+  top: 24px;
+  width: 30px;
+}
+
+#cloud-4 {
+  left: 36px;
+  top: 18px;
+  width: 40px;
+}
+
+#cloud-5 {
+  left: 48px;
+  top: 14px;
+  width: 20px;
+}
+
+#cloud-6 {
+  left: 22px;
+  top: 26px;
+  width: 30px;
+}
+
+@keyframes cloud-move {
+  0% {
+    transform: translateX(0px);
+  }
+
+  40% {
+    transform: translateX(4px);
+  }
+
+  80% {
+    transform: translateX(-4px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.stars {
+  transform: translateY(-32px);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.star {
+  fill: white;
+  position: absolute;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  animation-name: star-twinkle;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+#input:checked + .slider .stars {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+#star-1 {
+  width: 20px;
+  top: 2px;
+  left: 3px;
+  animation-delay: 0.3s;
+}
+
+#star-2 {
+  width: 6px;
+  top: 16px;
+  left: 3px;
+}
+
+#star-3 {
+  width: 12px;
+  top: 20px;
+  left: 10px;
+  animation-delay: 0.6s;
+}
+
+#star-4 {
+  width: 18px;
+  top: 0px;
+  left: 18px;
+  animation-delay: 1.3s;
+}
+
+@keyframes star-twinkle {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.2);
+  }
+
+  80% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* popup for error */
+
+.swal-modal{
+  background-color: #152131;
+}
+.swal-title,.swal-text{
+  color: white;
+}
