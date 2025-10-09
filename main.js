@@ -48,13 +48,13 @@ function success(position) {
   )
 
     .catch((error) => {
-  swal("Error!", error.message , "error");
+    swal("خطأ!", "حدثت مشكلة أثناء تحميل البيانات. حاول مرة أخرى.", "error");
+
     });
 }
 function error(errorMessage) {
-  swal("Error!", errorMessage.message , "error");
+    swal("!خطأ", ".تعذر تحديد موقعك. تأكد من تفعيل خدمة تحديد الموقع", "error");
 }
-
 
 function convertTo12Hours(time){
   time = time.split(":");
@@ -231,5 +231,6 @@ function setActivePrayer(nextPrayer){
   let addActiveToNextPrayer = document.querySelector(`#${nextPrayer.toLowerCase()}`);
   addActiveToNextPrayer.classList.add("active");
 }
+
 
 
