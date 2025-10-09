@@ -342,8 +342,28 @@ hr{
 
 }
 @media  (max-width:560px){
-        .prayer{
-            min-width: 320px;}
+          .prayer{
+            width: 95%;
+            margin: 10px;
+          }
+        .prayer-times{
+          justify-content: space-evenly;
+          padding: 0px;
+        }
+}
+
+@media (max-width: 560px) and (min-width: 500px) {
+  .prayer{
+    height: 153.5px;
+    width: 165px;
+  }
+  .prayer{
+    margin: 10px;
+  }
+  .prayer-times{
+    justify-content: space-evenly;
+    padding: 0px;
+  }
 }
 @media (min-width:768px) and (max-width: 992px){
     .date-section{
@@ -650,3 +670,4 @@ hr{
 .swal-title,.swal-text{
   color: white;
 }
+
