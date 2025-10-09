@@ -1,6 +1,6 @@
 let loader = document.querySelector(".loader-container");
 loader.style.display = "flex";
-
+console.log(loader);
 const loadingTimeout = setTimeout(() => {
   loader.style.display = "none";
   swal("!خطأ", "فشل تحميل البيانات. تأكد من الاتصال بالإنترنت.", "error");
@@ -236,4 +236,5 @@ function setActivePrayer(nextPrayer){
   let addActiveToNextPrayer = document.querySelector(`#${nextPrayer.toLowerCase()}`);
   addActiveToNextPrayer.classList.add("active");
 }
+
 
