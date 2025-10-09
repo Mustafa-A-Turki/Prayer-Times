@@ -1,3 +1,11 @@
+let loader = document.querySelector(".loader-container");
+loader.style.display = "flex";
+
+const loadingTimeout = setTimeout(() => {
+  loader.style.display = "none";
+  swal("!خطأ", "فشل تحميل البيانات. تأكد من الاتصال بالإنترنت.", "error");
+}, 5000);
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(success, error, {
     enableHighAccuracy: true,
@@ -18,6 +26,11 @@ function success(position) {
       let timings = data.data.timings;
       let keys = Object.keys(timings);
       
+      if (data && data.data && data.data.timings)
+      {
+        clearTimeout(loadingTimeout);
+        loader.style.display = "none";
+      }
       for (let i = 0; i < keys.length; i++) {
         let prayerTime = document.querySelector(`#${keys[i].toLowerCase()} time span`);
         if (prayerTime == null) {
@@ -29,31 +42,27 @@ function success(position) {
 
       // date section 
       // // malad date
-      // --data.data.date.readable              this day in melad date
-      // --data.data.date.hijri.weekday.ar      this day in week range
-
       let melad_box = document.querySelector(".melad-date time");
       melad_box.setAttribute("datetime",`${data.data.date.hijri.weekday.ar}__${data.data.date.readable}`)
       melad_box.innerHTML = `${data.data.date.gregorian.date}__${data.data.date.hijri.weekday.ar}`;
       
       // // hijri date 
-      // --data.data.date.hijri.date            this day in hijri date
-      // --data.data.date.hijri.month.ar        this month in higri date
-      
       let higri_box = document.querySelector(".hegri-date time");
       higri_box.setAttribute("datetime",`${data.data.date.hijri.month.ar}__${data.data.date.hijri.date}`);
       higri_box.innerHTML = `${data.data.date.hijri.date}__${data.data.date.hijri.month.ar}`;
-
     }
   )
 
     .catch((error) => {
-    swal("خطأ!", "حدثت مشكلة أثناء تحميل البيانات. حاول مرة أخرى.", "error");
-
+            clearTimeout(loadingTimeout);
+      loader.style.display = "none";
+  swal("خطأ!", "حدثت مشكلة أثناء تحميل البيانات. حاول مرة أخرى.", "error");
     });
 }
-function error(errorMessage) {
-    swal("!خطأ", ".تعذر تحديد موقعك. تأكد من تفعيل خدمة تحديد الموقع", "error");
+function error() {
+        clearTimeout(loadingTimeout);
+      loader.style.display = "none";
+  swal("!خطأ", ".تعذر تحديد موقعك. تأكد من تفعيل خدمة تحديد الموقع", "error");
 }
 
 function convertTo12Hours(time){
@@ -108,12 +117,7 @@ copyHijriIcon.onclick = function (e){
   }, 0);
 }
 
-
-
 // detremine the next prayer
-
-
-
 function nextPrayer (timings , keys){
   let now = new Date();
   let smallDifference = Infinity , bigDifference = 0;
@@ -171,14 +175,15 @@ function nextPrayer (timings , keys){
   
 
   let theRemainingTimeUntilTheNextPrayer = document.querySelector(".a1 h3 time");
+
+  
   setInterval(() => {
   let totalNowSeconds = new Date().getHours()*3600 +  new Date().getMinutes() * 60 + new Date().getSeconds();
     let hours = +timings[nextPrayer][0] * 3600 ;
     let minute =  +timings[nextPrayer][1] * 60;
     let totalPrayerSeconds = hours + minute;
     
-    let difference =totalPrayerSeconds  - totalNowSeconds;
-
+    let difference = totalPrayerSeconds - totalNowSeconds;
         if (difference < 0) {
     difference += 24 * 3600; 
   }
@@ -231,6 +236,4 @@ function setActivePrayer(nextPrayer){
   let addActiveToNextPrayer = document.querySelector(`#${nextPrayer.toLowerCase()}`);
   addActiveToNextPrayer.classList.add("active");
 }
-
-
 
