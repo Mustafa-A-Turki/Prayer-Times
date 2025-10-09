@@ -182,7 +182,14 @@ function nextPrayer (timings , keys){
         if (difference < 0) {
     difference += 24 * 3600; 
   }
-  theRemainingTimeUntilTheNextPrayer.innerHTML = getTheRemainingTimeUntilTheNextPrayer(difference);
+  let timeUntilTheNextPrayer = getTheRemainingTimeUntilTheNextPrayer(difference);
+  // check if now is the time of prayer
+  let arr = timeUntilTheNextPrayer.split(":");
+  if (+arr[0]==0 && +arr[1]==0 && +arr[2]==0 ||
+  (+arr[0]==23 && +arr[1]==59 && +arr[2]==59)){
+    window.location.reload();
+  }
+  theRemainingTimeUntilTheNextPrayer.innerHTML = timeUntilTheNextPrayer;
 
   // progress 
     let prevPrayerHours = +timings[previousPrayer][0] * 3600 ;
@@ -224,4 +231,5 @@ function setActivePrayer(nextPrayer){
   let addActiveToNextPrayer = document.querySelector(`#${nextPrayer.toLowerCase()}`);
   addActiveToNextPrayer.classList.add("active");
 }
+
 
