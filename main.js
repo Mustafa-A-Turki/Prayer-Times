@@ -97,7 +97,7 @@ copyMeladIcon.onclick = function (e){
     setTimeout(() => {
         copyMeladIcon.classList.remove("fa-solid","fa-check");
         copyMeladIcon.classList.add("fa-copy-m","fa-copy","fa-regular");
-    }, 1000);
+    }, 1500);
   }, 0);
 }
 
@@ -113,7 +113,7 @@ copyHijriIcon.onclick = function (e){
     setTimeout(() => {
         copyHijriIcon.classList.remove("fa-solid","fa-check");
         copyHijriIcon.classList.add("fa-copy-m","fa-copy","fa-regular");
-    }, 1000);
+    }, 1500);
   }, 0);
 }
 
@@ -236,5 +236,6 @@ function setActivePrayer(nextPrayer){
   let addActiveToNextPrayer = document.querySelector(`#${nextPrayer.toLowerCase()}`);
   addActiveToNextPrayer.classList.add("active");
 }
+
 
 
