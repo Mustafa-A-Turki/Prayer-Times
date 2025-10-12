@@ -1,20 +1,36 @@
 let loader = document.querySelector(".loader-container");
+
 loader.style.display = "flex";
-console.log(loader);
-const loadingTimeout = setTimeout(() => {
+
+let noResponseTimeout = setTimeout(() => {
   loader.style.display = "none";
-  swal("!خطأ", "فشل تحميل البيانات. تأكد من الاتصال بالإنترنت.", "error");
-}, 5000);
+  swal("تنبيه!", "لم يتم الرد على طلب تحديد الموقع. برجاء السماح لإكمال التحميل.", "warning");
+}, 7000); 
 
 if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(success, error, {
+  navigator.geolocation.getCurrentPosition(
+    (position)=>{
+    clearTimeout(noResponseTimeout);
+    success(position);
+  }, 
+      (err) => {
+      clearTimeout(noResponseTimeout);
+      error(err);
+    },
+  {
     enableHighAccuracy: true,
     maximumAge: 0,
     timeout: 5000,
   });
-} 
+}
 
 function success(position) {
+
+  const loadingTimeout = setTimeout(() => {
+  loader.style.display = "none";
+  swal("!خطأ", "فشل تحميل البيانات. تأكد من الاتصال بالإنترنت.", "error");
+}, 5000);
+
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
 
@@ -25,44 +41,69 @@ function success(position) {
     .then((data) => {
       let timings = data.data.timings;
       let keys = Object.keys(timings);
-      
-      if (data && data.data && data.data.timings)
-      {
+
+      if (data && data.data && data.data.timings) {
         clearTimeout(loadingTimeout);
         loader.style.display = "none";
       }
       for (let i = 0; i < keys.length; i++) {
-        let prayerTime = document.querySelector(`#${keys[i].toLowerCase()} time span`);
+        let prayerTime = document.querySelector(
+          `#${keys[i].toLowerCase()} time span`
+        );
         if (prayerTime == null) {
           continue;
         }
         prayerTime.innerHTML = convertTo12Hours(timings[keys[i]]);
       }
-      nextPrayer(timings , keys);
+      nextPrayer(timings, keys);
 
-      // date section 
+      // date section
       // // malad date
       let melad_box = document.querySelector(".melad-date time");
-      melad_box.setAttribute("datetime",`${data.data.date.hijri.weekday.ar}__${data.data.date.readable}`)
+      melad_box.setAttribute(
+        "datetime",
+        `${data.data.date.hijri.weekday.ar}__${data.data.date.readable}`
+      );
       melad_box.innerHTML = `${data.data.date.gregorian.date}__${data.data.date.hijri.weekday.ar}`;
-      
-      // // hijri date 
+
+      // // hijri date
       let higri_box = document.querySelector(".hegri-date time");
-      higri_box.setAttribute("datetime",`${data.data.date.hijri.month.ar}__${data.data.date.hijri.date}`);
+      higri_box.setAttribute(
+        "datetime",
+        `${data.data.date.hijri.month.ar}__${data.data.date.hijri.date}`
+      );
       higri_box.innerHTML = `${data.data.date.hijri.date}__${data.data.date.hijri.month.ar}`;
-    }
-  )
+    })
 
     .catch((error) => {
-            clearTimeout(loadingTimeout);
+      clearTimeout(loadingTimeout);
       loader.style.display = "none";
-  swal("خطأ!", "حدثت مشكلة أثناء تحميل البيانات. حاول مرة أخرى.", "error");
+      swal("خطأ!", "حدثت مشكلة أثناء تحميل البيانات. حاول مرة أخرى.", "error");
     });
 }
-function error() {
-        clearTimeout(loadingTimeout);
-      loader.style.display = "none";
-  swal("!خطأ", ".تعذر تحديد موقعك. تأكد من تفعيل خدمة تحديد الموقع", "error");
+function error(err) {
+  loader.style.display = "none";
+  if (err.code === 1) {
+    // المستخدم رفض الإذن
+    swal(
+      "خطأ!",
+      "من فضلك اسمح بالوصول إلى الموقع للحصول على مواقيت الصلاة.",
+      "error"
+    );
+  } else if (err.code === 2) {
+    // الجهاز مش قادر يحدد الموقع
+    swal(
+      "خطأ!",
+      "تعذر تحديد موقعك الحالي، تأكد من تشغيل GPS أو الإنترنت.",
+      "error"
+    );
+  } else if (err.code === 3) {
+    // انتهى وقت الطلب (Timeout)
+    swal("خطأ!", "انتهى وقت المحاولة بدون استجابة. حاول مجددًا.", "error");
+  } else {
+    // أي خطأ عام آخر
+    swal("خطأ!", "لم يتم جلب البيانات. حاول مرة أخرى.", "error");
+  }
 }
 
 function convertTo12Hours(time){
@@ -236,6 +277,7 @@ function setActivePrayer(nextPrayer){
   let addActiveToNextPrayer = document.querySelector(`#${nextPrayer.toLowerCase()}`);
   addActiveToNextPrayer.classList.add("active");
 }
+
 
 
 
