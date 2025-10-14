@@ -35,11 +35,23 @@ function success(position) {
   let longitude = position.coords.longitude;
 
   fetch(
-    `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=5`
+    `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=5&school=0`
   )
     .then((response) => response.json())
     .then((data) => {
-      let timings = data.data.timings;
+        let timings = data.data.timings;
+      if (data.data.meta.timezone.includes("Africa/Cairo")) {
+            timings.Fajr = adjustTime(timings.Fajr, 1);    
+            timings.Asr = adjustTime(timings.Asr, -1); 
+      }
+
+    function adjustTime(time, offsetMinutes) {
+      let [h, m] = time.split(":").map(Number);
+      m += offsetMinutes;
+      if (m >= 60) { h++; m -= 60; }
+      if (m < 0) { h--; m += 60; }
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    }
       let keys = Object.keys(timings);
 
       if (data && data.data && data.data.timings) {
@@ -82,7 +94,19 @@ function success(position) {
     });
 }
 function error(err) {
-  loader.style.display = "none";
+  // لو فشل تحديد الموقع استخدم القاهرة كافتراضي
+  let defaultLat = 30.0444;
+  let defaultLon = 31.2357;
+
+  fetch(
+    `https://api.aladhan.com/v1/timings?latitude=${defaultLat}&longitude=${defaultLon}&method=5&school=0`
+  )
+    .then((response) => response.json())
+    .then((data) => success({ coords: { latitude: defaultLat, longitude: defaultLon } }))
+    .catch(() => {
+      loader.style.display = "none";
+      swal("خطأ!", "لم يتم تحميل بيانات القاهرة أيضًا. حاول مجددًا.", "error");
+    });
   if (err.code === 1) {
     // المستخدم رفض الإذن
     swal(
