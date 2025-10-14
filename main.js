@@ -369,3 +369,13 @@ if (!savedMode) {
 switch_mode_button.checked = savedMode === "dark";
 switch_mode_button.onclick = mode;
 
+// top sections heights
+let date_section = document.querySelector(".date-section");
+let next_prayer_section = document.querySelector(".next-prayer-section");
+
+window.onresize = setHeight;
+
+function setHeight() {
+  next_prayer_section.style.height = `${date_section.offsetHeight}px`;
+}
+setHeight();
