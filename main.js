@@ -376,6 +376,7 @@ let next_prayer_section = document.querySelector(".next-prayer-section");
 window.onresize = setHeight;
 
 function setHeight() {
-  next_prayer_section.style.height = `${date_section.offsetHeight}px`;
+  next_prayer_section.style.minHeight = `${date_section.offsetHeight}px`;
 }
 setHeight();
+
