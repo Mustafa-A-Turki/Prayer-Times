@@ -1,218 +1,247 @@
 <!DOCTYPE html>
 <html lang="ar">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./bootstrap/bootstrap-4.0.0-dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="./bootstrap/bootstrap-4.0.0-dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <!-- Popup For Error -->
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <title>مواقيت الصلاة</title>
-</head>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <title>مواقيت الصلاة</title>
+  </head>
 
-
-
-
-<body class="text-light">
-<!-- شاشة الريلود -->
-  <div class="loader-container">
-    <div class="loader">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-      <div class="bar4"></div>
-      <div class="bar5"></div>
-      <div class="bar6"></div>
-      <div class="bar7"></div>
-      <div class="bar8"></div>
-      <div class="bar9"></div>
-      <div class="bar10"></div>
-      <div class="bar11"></div>
-      <div class="bar12"></div>
+  <body class="text-light">
+    <!-- شاشة الريلود -->
+    <div class="loader-container">
+      <div class="loader">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+        <div class="bar6"></div>
+        <div class="bar7"></div>
+        <div class="bar8"></div>
+        <div class="bar9"></div>
+        <div class="bar10"></div>
+        <div class="bar11"></div>
+        <div class="bar12"></div>
+      </div>
+      <p class="loading-text">Reloading...</p>
     </div>
-    <p class="loading-text">Reloading...</p>
-  </div>
 
-  <div class="container">
-    <div class="top-sections">
-      <!-- قسم عرض التاريخ الميلادي والهجري -->
-      <section class="date-section">
-        <div class="dateBox">
-          <article class="melad-date">
-            <div>
-              <h5>
-                <!-- أيقونة التاريخ الميلادي يتم عرضها لاحقا بمكتبة FontAwsome -->
-                التاريخ الميلادي
-                <i class="fa-regular fa-calendar"></i>
-              </h5>
-              <!-- التاريخ الميلادي الحالي -->
-              <time datetime="2025-9-27" dir="rtl"><span>27 Sep 2025</span>__ السبت</time>
-            </div>
-            <!-- أيقونة نسخ التاريخ الميلادي يتم عرضها لاحقا بمكتبة FontAwsome -->
-            <i class="fa-regular fa-copy  fa-copy-m"></i>
-          </article>
+    <div class="container">
+      <div class="top-sections">
+        <!-- قسم عرض التاريخ الميلادي والهجري -->
+        <section class="date-section">
+          <div class="dateBox">
+            <article class="melad-date">
+              <div>
+                <h5>
+                  <!-- أيقونة التاريخ الميلادي يتم عرضها لاحقا بمكتبة FontAwsome -->
+                  التاريخ الميلادي
+                  <i class="fa-regular fa-calendar"></i>
+                </h5>
+                <!-- التاريخ الميلادي الحالي -->
+                <time datetime="2025-9-27" dir="rtl"
+                  ><span>27 Sep 2025</span>__ السبت</time
+                >
+              </div>
+              <!-- أيقونة نسخ التاريخ الميلادي يتم عرضها لاحقا بمكتبة FontAwsome -->
+              <i class="fa-regular fa-copy fa-copy-m"></i>
+            </article>
 
-          <hr />
+            <hr />
 
-          <article class="hegri-date">
-            <div>
-              <h5>
-                التاريخ الهجري
-                <i class="fa-solid fa-moon"></i>
-              </h5>
-              <time datetime="1447-3-15" dir="rtl"> <span> 15-3-1447</span>__ رَبيع الأوّل</time>
-            </div>
-            <i class="fa-regular fa-copy  fa-copy-h"></i>
-          </article>
-          <p class="note">نسأل الله القبول والثبات 🌙</p>
-      </section>
+            <article class="hegri-date">
+              <div>
+                <h5>
+                  التاريخ الهجري
+                  <i class="fa-solid fa-moon"></i>
+                </h5>
+                <time datetime="1447-3-15" dir="rtl">
+                  <span> 15-3-1447</span>__ رَبيع الأوّل</time
+                >
+              </div>
+              <i class="fa-regular fa-copy fa-copy-h"></i>
+            </article>
 
-      <section class="next-prayer-section">
-        <div class="next-prayer-section-box ">
-          <article class="a1">
-            <p class="p1">
-              الوقت المتبقى <i class="fa-regular fa-clock"></i>
-            </p>
-            <!-- البيانات دي هتتغير من خلال الJavaScript -->
-            <h3><time datetime="06:47:30">06:47:30</time></h3>
-            <p class="p2" dir="rtl">موعد الأذان عند <time datetime="05:13"> 05:13 AM</time></p>
-            <p class="p3" dir="rtl">الصلاة السابقة <span>العشاء</span> <time datetime="08:40">08:40 PM</time></p>
-          </article>
-          <article class="a2">
-            <svg width="150" height="150" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="45" stroke="#1f2732" stroke-width="8" fill="none" />
-              <circle id="progress-circle" cx="50" cy="50" r="45" stroke="#45c354" stroke-linecap="round"
-                stroke-width="8" fill="none" stroke-dasharray="282.6" stroke-dashoffset="84.78"
-                transform="rotate(-90 50 50)" />
+            <p class="note">نسأل الله القبول والثبات 🌙</p>
+          </div>
+        </section>
 
-            </svg>
-            <div class="inside-circle">
-              <p>الصلاة القادمة</p>
-              <h3>الفجر</h3>
-            </div>
-          </article>
+        <section class="next-prayer-section">
+          <div class="next-prayer-section-box">
+            <article class="a1">
+              <p class="p1">
+                الوقت المتبقى <i class="fa-regular fa-clock"></i>
+              </p>
+              <!-- البيانات دي هتتغير من خلال الJavaScript -->
+              <h3><time datetime="06:47:30">06:47:30</time></h3>
+              <p class="p2" dir="rtl">
+                موعد الأذان عند <time datetime="05:13"> 05:13 AM</time>
+              </p>
+              <p class="p3" dir="rtl">
+                الصلاة السابقة <span>العشاء</span>
+                <time datetime="08:40">08:40 PM</time>
+              </p>
+            </article>
+            <article class="a2">
+              <svg width="150" height="150" viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  stroke="#1f2732"
+                  stroke-width="8"
+                  fill="none"
+                />
+                <circle
+                  id="progress-circle"
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  stroke="#45c354"
+                  stroke-linecap="round"
+                  stroke-width="8"
+                  fill="none"
+                  stroke-dasharray="282.6"
+                  stroke-dashoffset="84.78"
+                  transform="rotate(-90 50 50)"
+                />
+              </svg>
+
+              <div class="inside-circle">
+                <p>الصلاة القادمة</p>
+                <h3>الفجر</h3>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section class="prayer-times">
+        <div class="prayer active" id="fajr">
+          <div class="blur"></div>
+          <i class="bi bi-sunrise"></i>
+          <p>الفجر</p>
+          <time datetime="05:30"><span>05:30 AM</span></time>
+        </div>
+        <div class="prayer" id="dhuhr">
+          <div class="blur"></div>
+          <i class="bi bi-brightness-high"></i>
+
+          <p>الظهر</p>
+          <time datetime="05:30"><span>12:30 PM</span></time>
+        </div>
+        <div class="prayer" id="asr">
+          <div class="blur"></div>
+          <i class="bi bi-brightness-high"></i>
+
+          <p>العصر</p>
+          <time datetime="05:30"><span>03:30 PM</span></time>
+        </div>
+        <div class="prayer" id="maghrib">
+          <div class="blur"></div>
+          <i class="bi bi-sunset"></i>
+          <p>المغرب</p>
+          <time datetime="05:30"><span>06:30 PM</span></time>
+        </div>
+        <div class="prayer" id="isha">
+          <div class="blur"></div>
+          <i class="bi bi-moon"></i>
+
+          <p>العشاء</p>
+          <time datetime="05:30"><span>08:30 PM</span></time>
         </div>
       </section>
+
+      <div class="switch-mode-button">
+        <label class="switch">
+          <input id="input" type="checkbox" checked="darkTheme" />
+          <div class="slider round">
+            <div class="sun-moon">
+              <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+
+              <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+              <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="50"></circle>
+              </svg>
+            </div>
+            <div class="stars">
+              <svg id="star-1" class="star" viewBox="0 0 20 20">
+                <path
+                  d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
+                ></path>
+              </svg>
+              <svg id="star-2" class="star" viewBox="0 0 20 20">
+                <path
+                  d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
+                ></path>
+              </svg>
+              <svg id="star-3" class="star" viewBox="0 0 20 20">
+                <path
+                  d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
+                ></path>
+              </svg>
+              <svg id="star-4" class="star" viewBox="0 0 20 20">
+                <path
+                  d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </label>
+      </div>
     </div>
 
-    <section class="prayer-times">
-      <div class="prayer active" id="fajr">
-        <div class="blur"></div>
-        <i class="bi bi-sunrise"></i>
-        <p>الفجر</p>
-        <time datetime="05:30"><span>05:30 AM</span></time>
-      </div>
-      <div class="prayer" id="dhuhr">
-        <div class="blur"></div>
-        <i class="bi bi-brightness-high"></i>
-
-        <p>الظهر</p>
-        <time datetime="05:30"><span>12:30 PM</span></time>
-      </div>
-      <div class="prayer" id="asr">
-        <div class="blur"></div>
-        <i class="bi bi-brightness-high"></i>
-
-        <p>العصر</p>
-        <time datetime="05:30"><span>03:30 PM</span></time>
-      </div>
-      <div class="prayer" id="maghrib">
-        <div class="blur"></div>
-        <i class="bi bi-sunset"></i>
-        <p>المغرب</p>
-        <time datetime="05:30"><span>06:30 PM</span></time>
-      </div>
-      <div class="prayer" id="isha">
-        <div class="blur"></div>
-        <i class="bi bi-moon"></i>
-
-        <p>العشاء</p>
-        <time datetime="05:30"><span>08:30 PM</span></time>
-      </div>
-    </section>
-
-    <div class="switch-mode-button">
-      <label class="switch">
-        <input id="input" type="checkbox" checked="darkTheme" />
-        <div class="slider round">
-          <div class="sun-moon">
-            <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-
-            <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-          </div>
-          <div class="stars">
-            <svg id="star-1" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
-              </path>
-            </svg>
-            <svg id="star-2" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
-              </path>
-            </svg>
-            <svg id="star-3" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
-              </path>
-            </svg>
-            <svg id="star-4" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
-              </path>
-            </svg>
-          </div>
-        </div>
-      </label>
-    </div>
-  </div>
-
-
-
-
-
-  <!-- <script src="./bootstrap/bootstrap-4.0.0-dist/js/jquery-3.7.1.min.js"></script>
+    <!-- <script src="./bootstrap/bootstrap-4.0.0-dist/js/jquery-3.7.1.min.js"></script>
     <script src="./bootstrap/bootstrap-4.0.0-dist/js/popper.min.js"></script>
     <script src="./bootstrap/bootstrap-4.0.0-dist/js/bootstrap.js"></script> -->
-  <script src="./main.js"></script>
-</body>
-
+    <script src="./main.js"></script>
+  </body>
 </html>
