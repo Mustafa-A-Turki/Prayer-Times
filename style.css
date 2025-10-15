@@ -151,7 +151,8 @@ hr {
 }
 
 .next-prayer-section-box {
-  min-height: 245px;
+  /* min-height: 245px; */
+  min-height: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -304,6 +305,9 @@ hr {
     width: 100%;
     margin-top: 20px;
   }
+  .next-prayer-section {
+    height: 245px;
+  }
   .next-prayer-section-box {
     height: 100%;
     justify-content: center;
@@ -319,11 +323,6 @@ hr {
   .top-sections {
     flex-wrap: wrap;
   }
-  /* .date-section,.next-prayer-section{
-        min-width: 437.1px;
-        max-width: 450px;
-        margin-top: 20px;
-    } */
 
   .next-prayer-section {
     height: 335px;
@@ -372,6 +371,13 @@ hr {
   }
 }
 
+@media (min-width: 992px) {
+    .next-prayer-section-box {
+        min-height: 245px;
+
+  }
+}
+
 @media (max-width: 768px) and (min-width: 561px) {
   .prayer {
     min-width: 223px;
@@ -391,6 +397,8 @@ hr {
     padding: 0px;
   }
 }
+
+
 /* switch mode button */
 
 .switch {
