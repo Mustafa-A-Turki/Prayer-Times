@@ -4,42 +4,64 @@ loader.style.display = "flex";
 
 let noResponseTimeout = setTimeout(() => {
   loader.style.display = "none";
-  swal("تنبيه!", "لم يتم الرد على طلب تحديد الموقع. برجاء السماح لإكمال التحميل.", "warning");
-}, 7000); 
+  swal(
+    "تنبيه!",
+    "لم يتم الرد على طلب تحديد الموقع. برجاء السماح لإكمال التحميل.",
+    "warning"
+  );
+}, 7000);
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
-    (position)=>{
-    clearTimeout(noResponseTimeout);
-    success(position);
-  }, 
-      (err) => {
+    (position) => {
+      clearTimeout(noResponseTimeout);
+      success(position);
+    },
+    (err) => {
       clearTimeout(noResponseTimeout);
       error(err);
     },
-  {
-    enableHighAccuracy: true,
-    maximumAge: 0,
-    timeout: 5000,
-  });
+    {
+      enableHighAccuracy: true,
+      maximumAge: 0,
+      timeout: 5000,
+    }
+  );
 }
 
 function success(position) {
-
   const loadingTimeout = setTimeout(() => {
-  loader.style.display = "none";
-  swal("!خطأ", "فشل تحميل البيانات. تأكد من الاتصال بالإنترنت.", "error");
-}, 5000);
+    loader.style.display = "none";
+    swal("!خطأ", "فشل تحميل البيانات. تأكد من الاتصال بالإنترنت.", "error");
+  }, 5000);
 
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
 
   fetch(
-    `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=5&school=0`
+    `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=5`
   )
     .then((response) => response.json())
     .then((data) => {
-        let timings = data.data.timings;
+      let timings = data.data.timings;
+      // if (data.data.meta.timezone.includes("Africa/Cairo")) {
+      //   timings.Fajr = adjustTime(timings.Fajr, 1);
+      //   timings.Asr = adjustTime(timings.Asr, -1);
+      // }
+
+      // function adjustTime(time, offsetMinutes) {
+      //   let [h, m] = time.split(":").map(Number);
+      //   m += offsetMinutes;
+      //   if (m >= 60) {
+      //     h++;
+      //     m -= 60;
+      //   }
+      //   if (m < 0) {
+      //     h--;
+      //     m += 60;
+      //   }
+      //   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+      // }
       let keys = Object.keys(timings);
 
       if (data && data.data && data.data.timings) {
@@ -90,7 +112,9 @@ function error(err) {
     `https://api.aladhan.com/v1/timings?latitude=${defaultLat}&longitude=${defaultLon}&method=5&school=0`
   )
     .then((response) => response.json())
-    .then((data) => success({ coords: { latitude: defaultLat, longitude: defaultLon } }))
+    .then((data) =>
+      success({ coords: { latitude: defaultLat, longitude: defaultLon } })
+    )
     .catch(() => {
       loader.style.display = "none";
       swal("خطأ!", "لم يتم تحميل بيانات القاهرة أيضًا. حاول مجددًا.", "error");
@@ -294,18 +318,17 @@ function setActivePrayer(nextPrayer) {
   addActiveToNextPrayer.classList.add("active");
 }
 
-
 // switch mode button
 
 let switch_mode_button = document.querySelector(".switch input");
 
-function mode(){
+function mode() {
   localStorage.setItem(
     "mode",
-    localStorage.getItem("mode")=== "dark" ? "light" : "dark"
+    localStorage.getItem("mode") === "dark" ? "light" : "dark"
   );
-  
-  document.body.classList.toggle("body-light")
+
+  document.body.classList.toggle("body-light");
   let prayer_times = document.querySelector(".prayer-times");
   prayer_times.classList.toggle("prayer-times-light");
 
@@ -323,13 +346,15 @@ function mode(){
 
   let hr = document.querySelector("hr");
   hr.classList.toggle("hr-light");
-  
-  let next_prayer_section_box = document.querySelector(".next-prayer-section-box");
+
+  let next_prayer_section_box = document.querySelector(
+    ".next-prayer-section-box"
+  );
   next_prayer_section_box.classList.toggle("next-prayer-section-box-light");
-  
+
   let firstCircle = document.querySelector("svg circle:first-of-type");
   let currentStroke = firstCircle.getAttribute("stroke");
-  
+
   firstCircle.setAttribute(
     "stroke",
     currentStroke === "#1f2732" ? "#2a36458d" : "#1f2732"
@@ -344,12 +369,16 @@ if (!savedMode) {
   document.body.classList.add("body-light");
   document.querySelector(".prayer-times").classList.add("prayer-times-light");
   document.querySelector(".date-section").classList.add("date-section-light");
-  document.querySelector(".next-prayer-section").classList.add("next-prayer-section-light");
+  document
+    .querySelector(".next-prayer-section")
+    .classList.add("next-prayer-section-light");
   document.querySelector(".dateBox").classList.add("dateBox-light");
   document.querySelector(".note").classList.add("note-light");
   document.querySelector("hr").classList.add("hr-light");
-  document.querySelector(".next-prayer-section-box").classList.add("next-prayer-section-box-light");
-  
+  document
+    .querySelector(".next-prayer-section-box")
+    .classList.add("next-prayer-section-box-light");
+
   let firstCircle = document.querySelector("svg circle:first-of-type");
   firstCircle.setAttribute("stroke", "#2a36458d");
 }
@@ -360,12 +389,9 @@ switch_mode_button.onclick = mode;
 // top sections heights
 let date_section = document.querySelector(".date-section");
 let next_prayer_section = document.querySelector(".next-prayer-section");
-
 window.onresize = setHeight;
 
 function setHeight() {
   next_prayer_section.style.minHeight = `${date_section.offsetHeight}px`;
 }
 setHeight();
-
-
