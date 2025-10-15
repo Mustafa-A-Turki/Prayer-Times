@@ -40,18 +40,6 @@ function success(position) {
     .then((response) => response.json())
     .then((data) => {
         let timings = data.data.timings;
-      if (data.data.meta.timezone.includes("Africa/Cairo")) {
-            timings.Fajr = adjustTime(timings.Fajr, 1);    
-            timings.Asr = adjustTime(timings.Asr, -1); 
-      }
-
-    function adjustTime(time, offsetMinutes) {
-      let [h, m] = time.split(":").map(Number);
-      m += offsetMinutes;
-      if (m >= 60) { h++; m -= 60; }
-      if (m < 0) { h--; m += 60; }
-      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
-    }
       let keys = Object.keys(timings);
 
       if (data && data.data && data.data.timings) {
@@ -379,4 +367,5 @@ function setHeight() {
   next_prayer_section.style.minHeight = `${date_section.offsetHeight}px`;
 }
 setHeight();
+
 
